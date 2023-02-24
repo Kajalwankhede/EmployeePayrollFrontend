@@ -1,0 +1,118 @@
+<app-header></app-header>
+<div class="main-content">
+    <div class="header-content">
+        <div class="emp-detail-text">
+            Employee Details <div class="emp-count">{{employeeCount}}</div>
+        </div>
+        <div class="options">
+            <button mat-raised-button class="search-button">
+                <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="search" class="icon"></mat-icon>
+            </button>
+        </div>
+        <div class="add-button">
+            <button routerLink="addEmployee" class="btn btn-success"><img [src]="addUrl" alt="Add User Logo">Add
+                User</button>
+        </div>
+    </div>
+    <div class="table-main">
+
+
+        <table id="table-display" class="table">
+            <tr>
+                <th class="profile-header"></th>
+                <th class="profile-header">Name</th>
+                <th class="profile-header">Gender</th>
+                <th class="profile-header">Department</th>
+                <th class="profile-header">Salary</th>
+                <th class="profile-header">Start Date</th>
+                <th class="profile-header">Actions</th>
+            </tr>
+            <tr *ngFor="let employee of employeeList">
+                <td>
+                    <img class="profile cell" src="{{employee.profilePic}}" alt="">
+                </td>
+                <td class="name cell">{{employee.name}}</td>
+                <td class="cell">{{employee.gender}}</td>
+                <td>
+                    <div class="dept">
+                        {{employee.department}}
+                    </div>
+                </td>
+                <td class="cell">{{employee.salary}}</td>
+                <td class="cell">{{employee.startDate}}</td>
+                <td class="cell">
+                    <button (click)="updateEmployee(employee)" class="btn btn-success"><img
+                            src="../assets/icons/create-black-18dp.svg" alt="edit">
+                    </button>&nbsp;
+                    <button (click)="deleteEmployee(employee)" class="btn btn-success"><img
+                            src="../assets/icons/delete-black-18dp.svg" alt="delete">
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+
+
+<!-- <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <ng-container [matColumnDef]="displayedColumns[0]">
+            <th class="profile-header" mat-header-cell *matHeaderCellDef>
+                {{ displayedColumns[0] }}
+            </th>
+            <td class="profile cell" mat-cell *matCellDef="let element">
+                <img [src]="element.profileUrl" alt="" />
+            </td>
+        </ng-container>
+        <ng-container [matColumnDef]="displayedColumns[1]">
+            <th class="name-header" mat-header-cell *matHeaderCellDef>
+                {{ displayedColumns[1] }}
+            </th>
+            <td class="name cell" mat-cell *matCellDef="let element">
+                {{ element.name }}
+            </td>
+        </ng-container>
+        <ng-container [matColumnDef]="displayedColumns[2]">
+            <th mat-header-cell *matHeaderCellDef>{{ displayedColumns[2] }}</th>
+            <td class="cell" mat-cell *matCellDef="let element">
+                {{ element.gender }}
+            </td>
+        </ng-container>
+        <ng-container [matColumnDef]="displayedColumns[3]">
+            <th mat-header-cell *matHeaderCellDef>{{ displayedColumns[3] }}</th>
+            <td class="cell" mat-cell *matCellDef="let element">
+                <mat-chip-listbox aria-label="Fish selection">
+                    <mat-chip *ngFor="let department of element.departMent">{{
+                        department
+                        }}</mat-chip>
+                </mat-chip-listbox>
+            </td>
+        </ng-container>
+        <ng-container [matColumnDef]="displayedColumns[4]">
+            <th mat-header-cell *matHeaderCellDef>{{ displayedColumns[4] }}</th>
+            <td class="cell" mat-cell *matCellDef="let element">
+                {{ element.salary }}
+            </td>
+        </ng-container>
+        <ng-container [matColumnDef]="displayedColumns[5]">
+            <th mat-header-cell *matHeaderCellDef>{{ displayedColumns[5] }}</th>
+            <td class="cell" mat-cell *matCellDef="let element">
+                {{ element.startDate }}
+            </td>
+        </ng-container>
+        <ng-container [matColumnDef]="displayedColumns[6]">
+            <th mat-header-cell *matHeaderCellDef>{{ displayedColumns[6] }}</th>
+            <td class="cell actions" mat-cell *matCellDef="let element">
+                <div class="action-container">
+                    <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="delete"
+                        class="icon"></mat-icon>
+                    <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="edit"
+                        class="icon edit"></mat-icon>
+                </div>
+            </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table> -->
+<!-- </div> -->
+<router-outlet></router-outlet>
